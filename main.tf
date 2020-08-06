@@ -1,3 +1,14 @@
+terraform {
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "colinbut-org"
+
+    workspaces {
+      name = "tfc-guide-example"
+    }
+  }
+}
+
 provider "aws" {
   version = "2.33.0"
 
