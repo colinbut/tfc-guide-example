@@ -21,6 +21,11 @@ provider "random" {
 
 resource "random_pet" "table_name" {}
 
+resource "aws_s3_bucket" "bucket" {
+  bucket = "random-bucket-delete-me-${random_pet.table_name.id}"
+  acl    = "private"
+}
+
 resource "aws_dynamodb_table" "tfc_example_table" {
   name = "${var.db_table_name}-${random_pet.table_name.id}"
 
